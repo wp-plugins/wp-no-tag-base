@@ -10,7 +10,7 @@ This plugin will completely remove the mandatory 'Tag Base' from your tag permal
 
 == Description ==
 
-This plugin does the same as iDope's wp-no-category-base does except with tage.  WP-no-tag-base will completely remove the mandatory 'Tag Base' from your category permalinks ( e.g. `wordimpressed.com/tag/my-tag/` to `wordimpressed.com/my-tag/` ).
+This plugin does the same as iDope's wp-no-category-base does except with tags.  WP-no-tag-base will completely remove the mandatory 'Tag Base' from your category permalinks ( e.g. `wordimpressed.com/tag/my-tag/` to `wordimpressed.com/my-tag/` ).
 
 The plugin requires no setup or modifying core wordpress files and will not break any links. It will also take care of redirecting your old category links to the new ones.
 
