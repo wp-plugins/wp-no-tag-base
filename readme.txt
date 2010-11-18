@@ -10,9 +10,9 @@ This plugin will completely remove the mandatory 'Tag Base' from your tag permal
 
 == Description ==
 
-This plugin does the same as iDope's wp-no-category-base does except with tags.  WP-no-tag-base will completely remove the mandatory 'Tag Base' from your category permalinks ( e.g. `wordimpressed.com/tag/my-tag/` to `wordimpressed.com/my-tag/` ).
+This plugin does the same as iDope's wp-no-category-base does except with tags.  WP-no-tag-base will completely remove the mandatory 'Tag Base' from your tag permalinks ( e.g. `wordimpressed.com/tag/my-tag/` to `wordimpressed.com/my-tag/` ).
 
-The plugin requires no setup or modifying core wordpress files and will not break any links. It will also take care of redirecting your old category links to the new ones.
+The plugin requires no setup or modifying core wordpress files and will not break any links. It will also take care of redirecting your old tag links to the new ones.
 
 = Features =
 
@@ -22,14 +22,13 @@ The plugin requires no setup or modifying core wordpress files and will not brea
 4. No need to modify wordpress files.
 5. Doesn't require other plugins to work.
 6. Compatible with sitemap plugins.
-7. Works with multiple sub-categories.
-8. Redirects old category permalinks to the new ones (301 redirect, good for SEO).
+8. Redirects old tag permalinks to the new ones (301 redirect, good for SEO).
 
 == Installation ==
 
 1. Upload `wp-no-tag-base.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. That's it! You should now be able to access your categories via http://myblog.com/my-tag/
+3. That's it! You should now be able to access your tags via http://myblog.com/my-tag/
 
 Note: If you have Wordpress 2.7 or above you can simply go to 'Plugins' &gt; 'Add New' in the Wordpress admin and search for "WP No Tag Base" and install it from there.
 
@@ -37,12 +36,14 @@ Note: If you have Wordpress 2.7 or above you can simply go to 'Plugins' &gt; 'Ad
 
 = Why should I use this plugin? =
 
-Use this plugin if you want to get rid of Wordpress' "Category base" completely. The normal behaviour of Wordpress is to add '/category' to your category permalinks if you leave "Category base" blank in the Permalink settings. So your category links look like `myblog.com/category/my-category/`. With this plugin your category links will look like `myblog.com/my-category/` (or `myblog.com/my-category/sub-category/` in case of sub categories).
+Use this plugin if you want to get rid of Wordpress' "Tag base" completely. The normal behaviour of Wordpress is to add '/tag' to your tag permalinks if you leave "Tag base" blank in the Permalink settings. So your tag links look like `myblog.com/tag/my-tag/`. With this plugin your tag links will look like `myblog.com/my-tag/` (or `myblog.com/my-tag/` in case of sub categories). 
+
+Why do this?  Well, shorter URLs mean betting indexing and bottom line is: it's good for SEO.  Having the meaningless "tag" in your permalinks will dilute their keyword relevance.  Keep your tag permalinks tight with this plugin.
 
 
 == Screenshots ==
 
-1. Sorry nopes
+
 
 == Changelog ==
 
