@@ -1,4 +1,4 @@
-=== WP No Tag Base ===
+=== WP-Admin Icons ===
 Contributors: Devin Walker; based from iDope's code
 Donate link: http://wordimpressed.com/
 Tags: tags, tag base, tag, permalinks, permastruct, links, seo, cms
@@ -13,6 +13,12 @@ This plugin will completely remove the mandatory 'Tag Base' from your tag permal
 This plugin does the same as iDope's wp-no-category-base does except with tags.  WP-no-tag-base will completely remove the mandatory 'Tag Base' from your tag permalinks ( e.g. `wordimpressed.com/tag/my-tag/` to `wordimpressed.com/my-tag/` ).
 
 The plugin requires no setup or modifying core wordpress files and will not break any links. It will also take care of redirecting your old tag links to the new ones.
+
+<h3>Important Links:</h3>
+
+[WordPressImpressed](http://www.wordimpressed.com/plugins/wp-admin-icons-plugin "WP-Admin Icons Page")
+
+[WordPressImpressed](http://www.wordimpressed.com/ "WordImpress - Developer's Site")
 
 = Features =
 
@@ -43,6 +49,9 @@ Why do this?  Well, shorter URLs mean betting indexing and bottom line is: it's 
 
 == Screenshots ==
 
+1. WP-Admin Icons Logo
+2. Wp-Admin Icons Default Screen
+3. WP-Admin Icons Packaged Icon View
 
 
 == Changelog ==
