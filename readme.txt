@@ -1,6 +1,6 @@
-=== WP-Admin Icons ===
-Contributors: Devin Walker; based from iDope's code
-Donate link: http://wordimpressed.com/
+=== WP No Tag Base ===
+Contributors: Devin Walker
+Donate link: http://www.wordimpressed.com/
 Tags: tags, tag base, tag, permalinks, permastruct, links, seo, cms
 Requires at least: 2.3
 Tested up to: 3.0.1
