@@ -16,9 +16,10 @@ The plugin requires no setup or modifying core wordpress files and will not brea
 
 <h3>Important Links:</h3>
 
-[WordPressImpressed](http://www.wordimpressed.com/plugins/wp-admin-icons-plugin "WP-Admin Icons Page")
 
-[WordPressImpressed](http://www.wordimpressed.com/ "WordImpress - Developer's Site")
+[WP-No-Tag-Base Page](http://www.wordimpressed.com/plugins/wp-admin-icons-plugin "WP-Admin Icons Page")
+
+[WordImpressed](http://www.wordimpressed.com/ "WordImpress - Developer's Site")
 
 = Features =
 
