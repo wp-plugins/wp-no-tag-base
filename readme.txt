@@ -1,5 +1,5 @@
 === WP-No-Tag-Base ===
-Contributors: Devin Walker
+Contributors: dlocc
 Donate link: http://www.wordimpressed.com/
 Tags: tags, tag base, tag, no tag base, permalinks, permastruct, links, seo, cms, wp-no-tag-base
 Requires at least: 2.3
