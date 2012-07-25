@@ -3,9 +3,9 @@
 Plugin Name: WP No Tags Base
 Plugin URI: http://www.wordimpressed.com/plugins/wordpress-no-tag-base-plugin/ 
 Description: Removes '/tags' from your tags permalinks without complicated .htaccess file configurations or any other code.  Simply install this plugin and watch your "tag"-based permalinks effectively dissapear.  Takes care of redirects for you as well.  This plugin is heavily based from iDope's wp-no-category-base plugin.
-Version: 1.1
+Version: 1.2
 Author: Devin Walker
-Author URI: http://wordimpressed.com/
+Author URI: http://imdev.in/
 */
 
 /*  Copyright 2010
@@ -89,15 +89,26 @@ function no_tag_base_rewrite_rules($tag_rewrite) {
 add_filter('query_vars', 'no_tag_base_query_vars');
 function no_tag_base_query_vars($public_query_vars) {
 	$public_query_vars[] = 'tag_redirect';
-	return $public_query_vars;
+
+
+    return $public_query_vars;
 }
 // Redirect if 'tag_redirect' is set
 add_filter('request', 'no_tag_base_request');
+
+//Updated for WP 3.4.1
 function no_tag_base_request($query_vars) {
-	//print_r($query_vars); // For Debugging
-	if(isset($query_vars['tag_redirect'])) {
-		$taglink = trailingslashit(get_option( 'home' )) . user_trailingslashit( $query_vars['tag_redirect'], 'tag' );
-		status_header(301);
+	//var_dump($query_vars); // For Debugging
+    //backwards compatibility for older WP versions
+	if(isset($query_vars['tag_redirect']) || isset($query_vars['attachment'])) {
+ 		//@ADDED version 1.2
+        //create tag link older tag method
+        $tag =  user_trailingslashit($query_vars['tag_redirect'], 'tag');
+        if($tag == "/"){
+            $tag = user_trailingslashit($query_vars['attachment'], 'tag');
+        }
+        $taglink = trailingslashit(get_option( 'home' )) . $tag;
+        status_header(301);
 		header("Location: $taglink");
 		exit();
 	}
