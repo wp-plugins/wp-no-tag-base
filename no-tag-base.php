@@ -44,15 +44,17 @@ function no_tag_base_deactivate() {
 add_filter('tag_link', 'no_tag_base',1000,2);
 function no_tag_base($taglink, $tag_id) {
 	$tag = &get_tag( $tag_id );
-	if ( is_wp_error( $tag ) )
-		return $tag;
+
+    if (is_wp_error( $tag )) {
+        return $tag;
+    }
+
 	$tag_nicename = $tag->slug;
 	
-	if ( $tag->parent == $tag_id ) // recursive recursion
-		$tag->parent = 0;
-	elseif ($tag->parent != 0 )
-		$tag_nicename = get_tag_parents( $tag->parent, false, '/', true ) . $tag_nicename;
-	
+	if ( $tag->parent == $tag_id ) {  // recursive recursion
+       $tag->parent = 0;
+    }
+
 	$taglink = trailingslashit(get_option( 'home' )) . user_trailingslashit( $tag_nicename, 'tag' );
 	return $taglink;
 }
@@ -60,28 +62,28 @@ function no_tag_base($taglink, $tag_id) {
 // Add our custom tag rewrite rules
 add_filter('tag_rewrite_rules', 'no_tag_base_rewrite_rules');
 function no_tag_base_rewrite_rules($tag_rewrite) {
-	//print_r($tag_rewrite); // For Debugging
-	
+//	print_r($tag_rewrite); // For Debugging
+
 	$tag_rewrite=array();
 	$tags=get_tags(array('hide_empty'=>false));
 	foreach($tags as $tag) {
 		$tag_nicename = $tag->slug;
-		if ( $tag->parent == $tag->tag_ID ) // recursive recursion
-			$tag->parent = 0;
-		elseif ($tag->parent != 0 )
-			$tag_nicename = get_tag_parents( $tag->parent, false, '/', true ) . $tag_nicename;
-		$tag_rewrite['('.$tag_nicename.')/(?:feed/)?(feed|rdf|rss|rss2|atom)/?$'] = 'index.php?tag=$matches[1]&feed=$matches[2]';
+
+        if ( $tag->parent == $tag_id ) {  // recursive recursion
+           $tag->parent = 0;
+        }
+        //the magic
+        $tag_rewrite['('.$tag_nicename.')/(?:feed/)?(feed|rdf|rss|rss2|atom)/?$'] = 'index.php?tag=$matches[1]&feed=$matches[2]';
 		$tag_rewrite['('.$tag_nicename.')/page/?([0-9]{1,})/?$'] = 'index.php?tag=$matches[1]&paged=$matches[2]';
 		$tag_rewrite['('.$tag_nicename.')/?$'] = 'index.php?tag=$matches[1]';
 	}
 	// Redirect support from Old tag Base
 	global $wp_rewrite;
 	$old_base = $wp_rewrite->get_tag_permastruct();
-	$old_base = str_replace( '%tag%', '(.+)', $old_base );
+    $old_base = str_replace( '%tag%', '(.+)', $old_base );
 	$old_base = trim($old_base, '/');
 	$tag_rewrite[$old_base.'$'] = 'index.php?tag_redirect=$matches[1]';
-	
-	//print_r($tag_rewrite); // For Debugging
+	print_r($tag_rewrite); // For Debugging
 	return $tag_rewrite;
 }
 
@@ -89,8 +91,6 @@ function no_tag_base_rewrite_rules($tag_rewrite) {
 add_filter('query_vars', 'no_tag_base_query_vars');
 function no_tag_base_query_vars($public_query_vars) {
 	$public_query_vars[] = 'tag_redirect';
-
-
     return $public_query_vars;
 }
 // Redirect if 'tag_redirect' is set
