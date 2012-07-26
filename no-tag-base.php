@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: WP No Tags Base
+Plugin Name: WP-No-tag-Base
 Plugin URI: http://www.wordimpressed.com/plugins/wordpress-no-tag-base-plugin/ 
 Description: Removes 'tag' from your WordPress tag permalinks without complicated .htaccess file configurations or any other code.  Simply install this plugin and watch your "tag"-based permalinks effectively disappear.  Takes care of redirects for you as well.
 Version: 1.2.1

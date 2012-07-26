@@ -10,7 +10,7 @@ This plugin will completely remove the mandatory 'Tag Base' from your tag permal
 
 == Description ==
 
-WP-no-tag-base will completely remove the mandatory tag base from your permalinks ( e.g. `wordimpressed.com/tag/my-tag/` to `wordimpressed.com/my-tag/` ).
+WP-No-tag-base will completely remove the mandatory tag base from your permalinks ( e.g. `wordimpressed.com/tag/my-tag/` to `wordimpressed.com/my-tag/` ).
 
 The plugin requires no setup or modifying core WordPress files and should not break any links.   It will also take care of redirecting your old tag links to the new ones.
 
