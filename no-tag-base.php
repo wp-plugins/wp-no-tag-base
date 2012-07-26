@@ -63,7 +63,6 @@ function no_tag_base($taglink, $tag_id) {
 add_filter('tag_rewrite_rules', 'no_tag_base_rewrite_rules');
 function no_tag_base_rewrite_rules($tag_rewrite) {
 //	print_r($tag_rewrite); // For Debugging
-
 	$tag_rewrite=array();
 	$tags=get_tags(array('hide_empty'=>false));
 	foreach($tags as $tag) {
@@ -83,7 +82,7 @@ function no_tag_base_rewrite_rules($tag_rewrite) {
     $old_base = str_replace( '%tag%', '(.+)', $old_base );
 	$old_base = trim($old_base, '/');
 	$tag_rewrite[$old_base.'$'] = 'index.php?tag_redirect=$matches[1]';
-	print_r($tag_rewrite); // For Debugging
+
 	return $tag_rewrite;
 }
 
