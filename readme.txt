@@ -57,10 +57,15 @@ Why do this?  Well, shorter URLs mean betting indexing and bottom line is: it's 
 == Changelog ==
 
 = 1.2.1 =
-Removed function get_tag_parents() that was causing fatal errors in some environments
+* Removed function get_tag_parents() that was causing fatal errors in some environments
+* Spelling improvements for description of plugin and additional format for plugin readme file
+
 
 = 1.2 =
-Updated plugin for WP 3.4.1 and debugged optional Tag base feature in WordPress' Permalink settings to ensure 301 redirects are working properly even if user has provided an alternate tag base.  Updated description of plugin, added plugin header image and add additional code comments. Verified plugin works properly with Google XML Sitemaps and WordPress SEO by Yoast sitemap generators.
+* Updated plugin for WP 3.4.1 and debugged optional Tag base feature in WordPress' Permalink settings to ensure 301 redirects are working properly even if user has provided an alternate tag base
+* Updated description of plugin, added plugin header image and add additional code comments
+* Verified plugin works properly with Google XML Sitemaps and WordPress SEO by Yoast sitemap generators.
 
 = 1.1 =
-Updated plugin to refresh tag-base rewrite rules for newly created tags, deleted tags and edited tags.  Modified 1.0 Modified iDope's code to work for tags.  Could add both features and a GUI but have no time for now
+* Updated plugin to refresh tag-base rewrite rules for newly created tags, deleted tags and edited tags
+* Modified 1.0 Modified iDope's code to work for tags.  Could add both features and a GUI but have no time for now
