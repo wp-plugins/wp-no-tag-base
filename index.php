@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-		<title>WP No Category Base</title>
+		<title>WP No Tag Base</title>
 	</head>
 	<body>
 		<ul>

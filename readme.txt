@@ -56,6 +56,10 @@ Why do this?  Well, shorter URLs mean betting indexing and bottom line is: it's 
 
 == Changelog ==
 
+= 1.2.2 =
+* Fixed issue with rewrite causing media upload urls to be improperly redirected
+* Minor code clean up
+
 = 1.2.1 =
 * Removed function get_tag_parents() that was causing fatal errors in some environments
 * Spelling improvements for description of plugin and additional format for plugin readme file

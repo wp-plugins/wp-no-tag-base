@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: WP-No-tag-Base
+Plugin Name: WP-No-Tag-Base
 Plugin URI: http://www.wordimpressed.com/plugins/wordpress-no-tag-base-plugin/ 
 Description: Removes 'tag' from your WordPress tag permalinks without complicated .htaccess file configurations or any other code.  Simply install this plugin and watch your "tag"-based permalinks effectively disappear.  Takes care of redirects for you as well.
 Version: 1.2.1
@@ -40,35 +40,51 @@ function no_tag_base_deactivate() {
 	no_tag_base_refresh_rules();
 }
 
-// Remove tag base
-add_filter('tag_link', 'no_tag_base',1000,2);
-function no_tag_base($taglink, $tag_id) {
-	$tag = &get_tag( $tag_id );
-
-    if (is_wp_error( $tag )) {
-        return $tag;
-    }
-
-	$tag_nicename = $tag->slug;
-	
-	if ( $tag->parent == $tag_id ) {  // recursive recursion
-       $tag->parent = 0;
-    }
-
-	$taglink = trailingslashit(get_option( 'home' )) . user_trailingslashit( $tag_nicename, 'tag' );
-	return $taglink;
+// Remove tag base permastruct
+add_action('init', 'no_tag_base_permastruct');
+function no_tag_base_permastruct() {
+	global $wp_rewrite, $wp_version;
+    if (version_compare($wp_version, '3.4', '<')) {
+		// For pre-3.4 support
+		$wp_rewrite -> extra_permastructs['post_tag'][0] = '%post_tag%';
+	} else {
+		$wp_rewrite -> extra_permastructs['post_tag']['struct'] = '%post_tag%';
+	}
 }
+
+// Remove tag base
+//add_filter('tag_link', 'no_tag_base',1000,2);
+function no_tag_base($taglink, $tag_id) {
+        $tag = &get_tag( $tag_id );
+
+        if (is_wp_error( $tag )) {
+            return $tag;
+        }
+
+        $tag_nicename = $tag->slug;
+
+        if ( $tag->parent == $tag_id ) {
+           $tag->parent = 0;
+        }
+
+        $taglink = trailingslashit(get_option( 'home' )) . user_trailingslashit( $tag_nicename, 'tag' );
+
+	return $taglink;
+
+}
+
+
 
 // Add our custom tag rewrite rules
 add_filter('tag_rewrite_rules', 'no_tag_base_rewrite_rules');
 function no_tag_base_rewrite_rules($tag_rewrite) {
-//	print_r($tag_rewrite); // For Debugging
+
 	$tag_rewrite=array();
 	$tags=get_tags(array('hide_empty'=>false));
 	foreach($tags as $tag) {
 		$tag_nicename = $tag->slug;
 
-        if ( $tag->parent == $tag_id ) {  // recursive recursion
+        if ( $tag->parent == $tag_id ) {
            $tag->parent = 0;
         }
         //the magic
@@ -79,7 +95,7 @@ function no_tag_base_rewrite_rules($tag_rewrite) {
 	// Redirect support from Old tag Base
 	global $wp_rewrite;
 	$old_base = $wp_rewrite->get_tag_permastruct();
-    $old_base = str_replace( '%tag%', '(.+)', $old_base );
+    $old_base = str_replace( '%post_tag%', '(.+)', $old_base );
 	$old_base = trim($old_base, '/');
 	$tag_rewrite[$old_base.'$'] = 'index.php?tag_redirect=$matches[1]';
 
@@ -92,20 +108,18 @@ function no_tag_base_query_vars($public_query_vars) {
 	$public_query_vars[] = 'tag_redirect';
     return $public_query_vars;
 }
+
+
 // Redirect if 'tag_redirect' is set
 add_filter('request', 'no_tag_base_request');
-
 //Updated for WP 3.4.1
 function no_tag_base_request($query_vars) {
 	//var_dump($query_vars); // For Debugging
     //backwards compatibility for older WP versions
-	if(isset($query_vars['tag_redirect']) || isset($query_vars['attachment'])) {
+	if(isset($query_vars['tag_redirect'])) {
  		//@ADDED version 1.2
         //create tag link older tag method
-        $tag =  user_trailingslashit($query_vars['tag_redirect'], 'tag');
-        if($tag == "/"){
-            $tag = user_trailingslashit($query_vars['attachment'], 'tag');
-        }
+        $tag =  user_trailingslashit($query_vars['tag_redirect'], 'post_tag');
         $taglink = trailingslashit(get_option( 'home' )) . $tag;
         status_header(301);
 		header("Location: $taglink");
