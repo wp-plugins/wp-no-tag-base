@@ -3,7 +3,7 @@
 Plugin Name: WP-No-Tag-Base
 Plugin URI: http://www.wordimpressed.com/plugins/wordpress-no-tag-base-plugin/ 
 Description: Removes 'tag' from your WordPress tag permalinks without complicated .htaccess file configurations or any other code.  Simply install this plugin and watch your "tag"-based permalinks effectively disappear.  Takes care of redirects for you as well.
-Version: 1.2.1
+Version: 1.2.2
 Author: Devin Walker
 Author URI: http://imdev.in/
 */
@@ -31,12 +31,12 @@ add_action('created_post_tag','no_tag_base_refresh_rules');
 add_action('edited_post_tag','no_tag_base_refresh_rules');
 add_action('delete_post_tag','no_tag_base_refresh_rules');
 function no_tag_base_refresh_rules() {
-	global $wp_rewrite;
+    global $wp_rewrite;
 	$wp_rewrite->flush_rules();
 }
 register_deactivation_hook(__FILE__,'no_tag_base_deactivate');
 function no_tag_base_deactivate() {
-	remove_filter('tag_rewrite_rules', 'no_tag_base_rewrite_rules'); // We don't want to insert our custom rules again
+	remove_filter('tag_rewrite_rules', 'no_tag_base_rewrite_rules');
 	no_tag_base_refresh_rules();
 }
 
@@ -51,28 +51,6 @@ function no_tag_base_permastruct() {
 		$wp_rewrite -> extra_permastructs['post_tag']['struct'] = '%post_tag%';
 	}
 }
-
-// Remove tag base
-//add_filter('tag_link', 'no_tag_base',1000,2);
-function no_tag_base($taglink, $tag_id) {
-        $tag = &get_tag( $tag_id );
-
-        if (is_wp_error( $tag )) {
-            return $tag;
-        }
-
-        $tag_nicename = $tag->slug;
-
-        if ( $tag->parent == $tag_id ) {
-           $tag->parent = 0;
-        }
-
-        $taglink = trailingslashit(get_option( 'home' )) . user_trailingslashit( $tag_nicename, 'tag' );
-
-	return $taglink;
-
-}
-
 
 
 // Add our custom tag rewrite rules
@@ -117,8 +95,6 @@ function no_tag_base_request($query_vars) {
 	//var_dump($query_vars); // For Debugging
     //backwards compatibility for older WP versions
 	if(isset($query_vars['tag_redirect'])) {
- 		//@ADDED version 1.2
-        //create tag link older tag method
         $tag =  user_trailingslashit($query_vars['tag_redirect'], 'post_tag');
         $taglink = trailingslashit(get_option( 'home' )) . $tag;
         status_header(301);
