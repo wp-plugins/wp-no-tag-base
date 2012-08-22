@@ -56,6 +56,11 @@ Why do this?  Well, shorter URLs mean betting indexing and bottom line is: it's 
 
 == Changelog ==
 
+= 1.2.3 =
+* Debugged/Fixed issues with 500 redirect error notice for some environments
+* Fixed issue with tag base 301 redirects not working as expected
+* Further debugged custom tag base 301 redirect support
+
 = 1.2.2 =
 * Fixed issue with rewrite causing media upload urls to be improperly redirected
 * Minor code clean up
