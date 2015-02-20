@@ -1,24 +1,24 @@
 === WP-No-Tag-Base ===
-Contributors: dlocc
-Donate link: http://www.wordimpressed.com/
+Contributors: dlocc, wordimpress
+Donate link: http://www.wordimpress.com/
 Tags: tags, tag base, tag, no tag base, permalinks, permastruct, links, seo, cms, wp-no-tag-base
-Requires at least: 2.3
-Tested up to: 3.4.1
+Requires at least: 3.6
+Tested up to: 4.1.1
 Stable tag: trunk
 
 This plugin will completely remove the mandatory 'Tag Base' from your tag permalinks (e.g. `/tag/my-tag/` to `/my-tag/`).
 
 == Description ==
 
-WP-No-tag-base will completely remove the mandatory tag base from your permalinks ( e.g. `wordimpressed.com/tag/my-tag/` to `wordimpressed.com/my-tag/` ).
+WP-No-tag-base will completely remove the mandatory tag base from your permalinks ( e.g. `wordimpress.com/tag/my-tag/` to `wordimpress.com/my-tag/` ).
 
 The plugin requires no setup or modifying core WordPress files and should not break any links.   It will also take care of redirecting your old tag links to the new ones.
 
 <h3>Important Links:</h3>
 
-[WP-No-Tag-Base Page](http://www.wordimpressed.com/plugins/wp-admin-icons-plugin "WP-Admin Icons Page")
-
-[WordImpressed](http://www.wordimpressed.com/ "WordImpress - Developer's Site")
+[Get Support](http://www.wordimpress.com/plugins/wp-admin-icons-plugin "WP-Admin Icons Support")
+[Rate Plugin 5-Stars](http://wordpress.org/support/view/plugin-reviews/wp-no-tag-base "WP-Admin Icons Rating")
+[Visit WordImpress](http://www.wordimpress.com/ "WordImpress - Developer's Site")
 
 = Features =
 
